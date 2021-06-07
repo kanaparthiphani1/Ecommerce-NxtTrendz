@@ -1,0 +1,77 @@
+/* Write your CSS code here */
+* {
+  margin: 0px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 170px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.nav-link {
+  color: #475569;
+  font-weight: 500;
+}
+
+.logout {
+  background-color: #0b69ff;
+  color: white;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+.nav-links-sm {
+  display: none;
+}
+
+.logout-sm {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  .logo {
+    width: 110px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links-sm {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    background-color: #e6f6ff;
+    padding: 15px;
+    list-style: none;
+  }
+
+  .logout-sm {
+    display: block;
+    width: 40px;
+  }
+  .img-sm {
+    width: 30px;
+  }
+}

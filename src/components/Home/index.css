@@ -1,0 +1,87 @@
+/* Write your CSS code here */
+.outer-cont {
+  padding: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
+  min-height: 100vh;
+}
+
+.home-cont {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.matter-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-right: 60px;
+}
+
+.matter-head {
+  font-size: 55px;
+  margin-bottom: 30px;
+  color: #1e293b;
+}
+
+.matter-para {
+  font-size: 20px;
+  color: #475569;
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
+.cust-btn {
+  background-color: #0b69ff;
+  width: 140px;
+  height: 40px;
+  color: white;
+  border: 0px;
+  border-radius: 7px;
+}
+
+.home-img {
+  width: 40%;
+}
+.home-img-sm {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .outer-cont {
+    padding: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .home-cont {
+    flex-direction: column;
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .home-img {
+    display: none;
+  }
+  .home-img-sm {
+    display: block;
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  .matter-cont {
+    align-items: center;
+    padding-right: 0px;
+  }
+  .matter-head {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .matter-para {
+    font-size: 15px;
+    color: #475569;
+    margin-bottom: 30px;
+  }
+}

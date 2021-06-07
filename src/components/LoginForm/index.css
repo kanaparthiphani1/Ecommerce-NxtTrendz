@@ -1,0 +1,106 @@
+/* Write your CSS code here */
+.login-cont {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 35px;
+}
+
+.loginImg {
+  max-width: 50%;
+}
+
+.login-comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 450px;
+  height: 460px;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.login-logo {
+  max-width: 60%;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.input-cmp {
+  padding: 10px;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  border: 0px;
+  background-color: #d7dfe9;
+  border-radius: 5px;
+  outline-color: black;
+}
+
+.usr-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.userNotFound {
+  color: red;
+  margin-top: 10px;
+}
+
+.cust-form-btn {
+  padding: 10px;
+  background-color: #0b69ff;
+  color: white;
+  border: 0px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.login-logo-sm {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  .login-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-logo-sm {
+    display: block;
+    width: 50%;
+  }
+
+  .login-comp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 450px;
+    height: 100px;
+    border-radius: 6px;
+    box-shadow: none;
+    margin-top: 100px;
+  }
+
+  .login-logo {
+    display: none;
+  }
+  .loginImg {
+    max-width: 70%;
+    margin-top: 60px;
+  }
+}
