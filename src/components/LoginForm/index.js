@@ -1,102 +1,127 @@
-// Write your JS code here
 import {Component} from 'react'
+import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 import './index.css'
 
 class LoginForm extends Component {
-  state = {username: '', password: '', usernotFound: false}
-
-  onUsernameChange = event => {
-    this.setState({username: event.target.value, usernotFound: false})
+  state = {
+    username: '',
+    password: '',
+    showSubmitError: false,
+    errorMsg: '',
   }
 
-  onPasswordChange = event => {
-    this.setState({password: event.target.value, usernotFound: false})
+  onChangeUsername = event => {
+    this.setState({username: event.target.value})
   }
 
-  onSubmitSuccess = () => {
+  onChangePassword = event => {
+    this.setState({password: event.target.value})
+  }
+
+  onSubmitSuccess = token => {
     const {history} = this.props
-    history.push('/')
+
+    Cookies.set('jwt_token', token, {
+      expires: 30,
+    })
+    history.replace('/')
   }
 
-  onFormSubmit = async event => {
+  onSubmitFailure = errorMsg => {
+    this.setState({showSubmitError: true, errorMsg})
+  }
+
+  submitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
-    const userBody = {username, password}
+    const userDetails = {username, password}
+    const url = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
-      body: JSON.stringify(userBody),
+      body: JSON.stringify(userDetails),
     }
-    try {
-      const response = await fetch('https://apis.ccbp.in/login', options)
-      const jsonResp = await response.json()
-      if (response.ok === true) {
-        this.onSubmitSuccess()
-      } else {
-        this.setState({usernotFound: true})
-      }
-    } catch (e) {
-      console.log(e.message)
+    const response = await fetch(url, options)
+    const data = await response.json()
+    if (response.ok === true) {
+      this.onSubmitSuccess(data.jwt_token)
+    } else {
+      this.onSubmitFailure(data.error_msg)
     }
+  }
+
+  renderPasswordField = () => {
+    const {password} = this.state
+    return (
+      <>
+        <label className="input-label" htmlFor="password">
+          PASSWORD
+        </label>
+        <input
+          type="password"
+          id="password"
+          className="password-input-field"
+          value={password}
+          onChange={this.onChangePassword}
+          placeholder="Password"
+        />
+      </>
+    )
+  }
+
+  renderUsernameField = () => {
+    const {username} = this.state
+    return (
+      <>
+        <label className="input-label" htmlFor="username">
+          USERNAME
+        </label>
+        <input
+          type="text"
+          id="username"
+          className="username-input-field"
+          value={username}
+          onChange={this.onChangeUsername}
+          placeholder="Username"
+        />
+      </>
+    )
   }
 
   render() {
-    const {username, password, usernotFound} = this.state
-    const ele = (
-      <div className="login-cont">
+    const {showSubmitError, errorMsg} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
+
+    return (
+      <div className="login-form-container">
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-          className="login-logo-sm"
-          alt="img"
+          className="login-website-logo-mobile-image"
+          alt="website logo"
         />
         <img
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
-          className="loginImg"
-          alt="img"
+          className="login-image"
+          alt="website login"
         />
-        <div className="login-comp">
+        <form className="form-container" onSubmit={this.submitForm}>
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
-            className="login-logo"
-            alt="img"
+            className="login-website-logo-desktop-image"
+            alt="website logo"
           />
-          <form className="login-form" onSubmit={this.onFormSubmit}>
-            <label className="usr-lbl" htmlFor="user">
-              USERNAME
-            </label>
-            <input
-              type="text"
-              name="username"
-              className="input-cmp"
-              value={username}
-              id="user"
-              placeholder="Username"
-              onChange={this.onUsernameChange}
-            />
-            <label className="usr-lbl" htmlFor="pass">
-              PASSWORD
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              className="input-cmp"
-              id="pass"
-              placeholder="Password"
-              onChange={this.onPasswordChange}
-            />
-            <button type="submit" className="cust-form-btn">
-              Login
-            </button>
-            {usernotFound && (
-              <span className="userNotFound">
-                *Username and Password didn't Match
-              </span>
-            )}
-          </form>
-        </div>
+          <div className="input-container">{this.renderUsernameField()}</div>
+          <div className="input-container">{this.renderPasswordField()}</div>
+          <button type="submit" className="login-button">
+            Login
+          </button>
+          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
+        </form>
       </div>
     )
-    return ele
   }
 }
 

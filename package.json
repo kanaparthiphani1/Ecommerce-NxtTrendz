@@ -1,5 +1,5 @@
 {
-  "name": "nxt-trendz-authentication",
+  "name": "nxt-trendz-authentication-2",
   "private": true,
   "version": "1.0.0",
   "engines": {
@@ -13,6 +13,7 @@
     "chalk": "4.1.0",
     "history": "5.0.0",
     "msw": "0.28.1",
+    "js-cookie": "2.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "5.2.0"
