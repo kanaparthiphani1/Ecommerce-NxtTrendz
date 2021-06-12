@@ -31,7 +31,7 @@ const Header = props => {
           </button>
         </div>
 
-        <div className="nav-content nav-bar-large-container">
+        <div className="nav-bar-large-container">
           <img
             className="website-logo"
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
