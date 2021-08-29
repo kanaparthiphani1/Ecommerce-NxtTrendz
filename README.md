@@ -1,6 +1,11 @@
 In the latest commit I built a **Nxt Trendz** App with features **Login**, **Routes**, **Context**, etc 
 
-### Refer to image below:
+### Check at https://phaniNxtTrendz.ccbp.tech
+
+**UserName : rahul**
+**Password : rahul@2021**
+
+### Refer to Video below:
 
 <div style="text-align: center;">
   <video style="max-width:70%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12);outline:none;" loop="true" autoplay="autoplay" controls="controls" muted>
