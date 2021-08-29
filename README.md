@@ -2,7 +2,8 @@ In the latest commit I built a **Nxt Trendz** App with features **Login**, **Rou
 
 ### Check at https://phaniNxtTrendz.ccbp.tech
 
-**UserName : rahul**
+**UserName : rahul** 
+
 **Password : rahul@2021**
 
 ### Refer to Video below:
